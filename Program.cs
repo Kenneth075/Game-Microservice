@@ -1,9 +1,14 @@
+using Play.Catalog.Service;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers(options =>
 {
     options.SuppressAsyncSuffixInActionNames = false;
 });
+
+var startup = new Startup(builder.Configuration);
+startup.ConfigureServices(builder.Services);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -10,7 +10,11 @@ namespace Play.Catalog.Service.Controllers
     [ApiController]
     public class ItemsController : ControllerBase
     {
-        private readonly ItemsRepository itemsRepository = new();
+        private readonly IRepository<Items> itemsRepository;
+        public ItemsController(IRepository<Items> itemsRepository)
+        {
+            this.itemsRepository = itemsRepository;
+        }
 
         [HttpGet]
         public async Task<IEnumerable<ItemDto>> GetItemsAynce()
